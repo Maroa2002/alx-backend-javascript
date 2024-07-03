@@ -1,3 +1,5 @@
+import { StartOfSourceMap } from "source-map";
+
 interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
@@ -19,6 +21,35 @@ const printTeacher: printTeacherFunction = (firstName: string, lastName: string)
     return `${firstName.charAt(0)}. ${lastName}`;
 };
 
+interface Student {
+    firstName: string;
+    lastName: string;
+    workOnHomework(): string;
+    displayName(): String;
+}
+
+interface StudentConstructor {
+    new (firstName: string, lastName: string): string;
+}
+
+class StudentClass implements Student{
+    firstName: string;
+    lastName: string;
+
+    constructor(firstName: string, lastName: string) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    workOnHomework(): string {
+        return 'Currently working';
+    }
+
+    displayName(): String {
+        return this.firstName;
+    }
+}
+
 const teacher3: Teacher = {
     firstName: 'John',
     fullTimeEmployee: false,
@@ -35,8 +66,14 @@ const director1: Directors = {
     numberOfReports: 17,
   };
 
+
   console.log(director1);
   console.log(teacher3);
+
   const print_teacher = printTeacher("John", "Doe");
   console.log(print_teacher);
+
+  const student = new StudentClass('George', 'Maroa');
+  console.log(student.displayName());
+  console.log(student.workOnHomework());
   
