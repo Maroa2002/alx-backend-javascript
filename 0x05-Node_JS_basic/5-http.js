@@ -52,13 +52,11 @@ const hostname = '127.0.0.1';
 const port = 1245;
 
 const app = createServer((req, res) => {
-  const { url } = req;
-
-  if (url === '/') {
+  if (req.url === '/') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
-  } else if (url === '/students') {
+  } else if (req.url === '/students') {
     const dbPath = process.argv[2];
 
     countStudents(dbPath)
