@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import { promises as fs} from 'fs';
 
 export default async function readDatabase(path) {
   try {
@@ -21,9 +21,8 @@ export default async function readDatabase(path) {
       }
 
       fields[field].push(firstname);
-
-      return fields;
     });
+    return fields;
   } catch (error) {
     throw new Error('Cannot load the database');
   }
