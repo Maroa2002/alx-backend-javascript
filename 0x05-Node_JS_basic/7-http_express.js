@@ -64,7 +64,7 @@ app.get('/students', (req, res) => {
       res.send(`This is the list of our students\n${output}`);
     })
     .catch((err) => {
-      res.end(`This is the list of our students\n${err.message}`);
+      res.send(`This is the list of our students\n${err.message}`);
     });
 });
 
